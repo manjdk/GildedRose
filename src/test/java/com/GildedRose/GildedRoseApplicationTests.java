@@ -1,4 +1,4 @@
-package com.example.GildedRose;
+package com.GildedRose;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
