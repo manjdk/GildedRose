@@ -1,6 +1,10 @@
 package com.GildedRose;
 
+import org.springframework.data.annotation.Id;
+
 public class Item {
+    @Id
+    private String id;
     private String name;
     private int sellIn;
     private int quality;
@@ -9,6 +13,14 @@ public class Item {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -37,6 +49,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+        return this.id + ", " + this.name + ", " + this.sellIn + ", " + this.quality;
     }
 }
