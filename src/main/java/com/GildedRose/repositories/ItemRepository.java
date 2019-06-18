@@ -1,6 +1,6 @@
 package com.GildedRose.repositories;
 
-import com.GildedRose.Item;
+import com.GildedRose.shop.Item;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
