@@ -1,10 +1,8 @@
-package com.GildedRose;
+package com.GildedRose.shop;
 
-import com.GildedRose.items.UpdateItem;
 import com.GildedRose.repositories.ItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -12,38 +10,41 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Component
-@EnableScheduling
 @Configuration
-class GildedRose {
-    Item[] items;
+public class GildedRose {
+    private List<Item> items;
     private Category category;
     private int daysCounter;
     private Logger logger;
-
-    @Autowired
     private ItemRepository itemRepository;
 
-    public GildedRose(Item[] items) {
+    public GildedRose(List<Item> items, ItemRepository itemRepository) {
         this.items = items;
         this.category = new Category();
         this.daysCounter = 0;
         this.logger = Logger.getLogger(String.valueOf(GildedRose.class));
+        this.itemRepository = itemRepository;
     }
 
     @Scheduled(initialDelayString = "${delay.initial}", fixedDelayString = "${delay.fixed}")
-    public void updateQuality() {
+    public void updateAll() {
         logger.info("-------- day " + daysCounter + " --------");
         logger.info("id, name, sellIn, quality");
 
-        List<Item> all = itemRepository.findAll();
+        List<Item> items = itemRepository.findAll();
 
-        for (Item item : all) {
-            UpdateItem selectedCategory = category.defineCategory(item);
-            selectedCategory.updateItem(item);
-            logger.info(String.valueOf(item));
-            itemRepository.save(item);
+        for (Item item : items) {
+            updateItem(item);
         }
 
         daysCounter++;
+    }
+
+    @Async
+    private void updateItem(Item item) {
+        UpdateItem definedCategory = category.defineCategory(item);
+        definedCategory.updateItem(item);
+        logger.info(String.valueOf(item));
+        itemRepository.save(item);
     }
 }

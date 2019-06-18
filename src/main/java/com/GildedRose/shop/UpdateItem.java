@@ -1,6 +1,4 @@
-package com.GildedRose.items;
-
-import com.GildedRose.Item;
+package com.GildedRose.shop;
 
 public interface UpdateItem {
     int DECREASE_VALUE_BY_ONE = 1;

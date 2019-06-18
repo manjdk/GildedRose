@@ -1,9 +1,9 @@
-package com.GildedRose.items;
+package com.GildedRose.shop.behavior;
 
-import com.GildedRose.Item;
+import com.GildedRose.shop.Item;
+import com.GildedRose.shop.UpdateItem;
 
-public class AgedBrie implements UpdateItem  {
-
+public class AgedBrie implements UpdateItem {
     public void updateItem(Item item) {
         decreaseSellInFor(item);
         increaseQualityFor(item);

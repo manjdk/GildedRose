@@ -1,6 +1,7 @@
-package com.GildedRose.items;
+package com.GildedRose.shop.behavior;
 
-import com.GildedRose.Item;
+import com.GildedRose.shop.Item;
+import com.GildedRose.shop.UpdateItem;
 
 public class Sulfuras implements UpdateItem {
 

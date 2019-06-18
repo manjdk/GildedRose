@@ -1,6 +1,9 @@
-package com.GildedRose;
+package com.GildedRose.shop;
 
-import com.GildedRose.items.*;
+import com.GildedRose.shop.behavior.AgedBrie;
+import com.GildedRose.shop.behavior.BackStagePass;
+import com.GildedRose.shop.behavior.Default;
+import com.GildedRose.shop.behavior.Sulfuras;
 
 public class Category {
     private static final String AGED_BRIE = "Aged Brie";

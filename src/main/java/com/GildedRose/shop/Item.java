@@ -1,4 +1,4 @@
-package com.GildedRose;
+package com.GildedRose.shop;
 
 import org.springframework.data.annotation.Id;
 
@@ -9,7 +9,17 @@ public class Item {
     private int sellIn;
     private int quality;
 
+    public Item() {
+    }
+
     public Item(String name, int sellIn, int quality) {
+        this.name = name;
+        this.sellIn = sellIn;
+        this.quality = quality;
+    }
+
+    public Item(String id, String name, int sellIn, int quality) {
+        this.id = id;
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
